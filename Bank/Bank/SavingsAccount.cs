@@ -13,16 +13,25 @@ namespace Bank
         public long Pesel;
         public SavingsAccount()
         {
-
         }
         public SavingsAccount(string accountnumber, decimal balance, string firstname, string lastname, long pesel)
         {
-            accountnumber = AccountNumber;
-            balance = Balance;
-            firstname = FirstName;
-            lastname = LastName;
-            pesel = Pesel;
+            AccountNumber = accountnumber;
+            Balance = balance;
+            FirstName = firstname;
+            LastName = lastname;
+            Pesel = pesel;
+        }
+        public string GetFullName()
+        {
+            string fullName = string.Format("{0} {1}", FirstName, LastName);
 
+            return fullName;
+        }
+        public string GetBalance()
+        {
+            string fullName = string.Format("{0} zł", Balance);
+            return fullName;
         }
     }
 }

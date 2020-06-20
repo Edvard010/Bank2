@@ -8,53 +8,24 @@ namespace Bank
         {
             string name = "Nazwa: Bank";
             string author = "Autor: Marek Zajac";
-            Console.WriteLine(name);
-            Console.WriteLine(author);
-            Console.WriteLine();
-            SavingsAccount savingsAccount = new SavingsAccount();
             
-            savingsAccount.AccountNumber = "940000000001";
-            savingsAccount.Balance = 0.0M;
-            savingsAccount.FirstName = "Marek";
-            savingsAccount.LastName = "Zajac";
-            savingsAccount.Pesel = 92010133333;
+            SavingsAccount savingsAccount = new SavingsAccount("940000000001", 0.0M, "Marek", "Zajac", 92010133333);
+            
+                       
+            SavingsAccount savingsAccount2 = new SavingsAccount("940000000002", 0.0M, "Jacek", "Placek", 91010166666);
+                        
 
-            Console.WriteLine("Dane konta:");
-            Console.WriteLine("Numer konta: {0}", savingsAccount.AccountNumber);
-            Console.WriteLine("Saldo: {0}zł", savingsAccount.Balance);
-            Console.WriteLine("Imię właściciela: {0}", savingsAccount.FirstName);
-            Console.WriteLine("Nazwisko właściciela: {0}", savingsAccount.LastName);
-            Console.WriteLine("PESEL właściciela: {0}", savingsAccount.Pesel);
+            BillingAccount billingAccount = new BillingAccount("940000000011", 0.0m, savingsAccount.FirstName, savingsAccount.LastName, savingsAccount.Pesel);
 
-            SavingsAccount savingsAccount2 = new SavingsAccount();
 
-            savingsAccount2.AccountNumber = "940000000002";
-            savingsAccount2.Balance = 0.0M;
-            savingsAccount2.FirstName = "Jacek";
-            savingsAccount2.LastName = "Placek";
-            savingsAccount2.Pesel = 91010166666;
-            Console.WriteLine();
-            Console.WriteLine("Dane konta nr 2:");
-            Console.WriteLine("Numer konta: {0}", savingsAccount2.AccountNumber);
-            Console.WriteLine("Saldo: {0}zł", savingsAccount2.Balance);
-            Console.WriteLine("Imię właściciela: {0}", savingsAccount2.FirstName);
-            Console.WriteLine("Nazwisko właściciela: {0}", savingsAccount2.LastName);
-            Console.WriteLine("PESEL właściciela: {0}", savingsAccount2.Pesel);
-
-            BillingAccount billingAccount = new BillingAccount();
-            billingAccount.AccountNumber = "940000000011";
-            billingAccount.Balance = 0.0m;
-            billingAccount.FirstName = savingsAccount.FirstName;
-            billingAccount.LastName = savingsAccount.LastName;
-            billingAccount.Pesel = savingsAccount.Pesel;
-            Console.WriteLine();
-            Console.WriteLine("Dane konta rozliczeniowego:");
-            Console.WriteLine("Numer konta: {0}", billingAccount.AccountNumber);
-            Console.WriteLine("Saldo: {0}zł", billingAccount.Balance);
-            Console.WriteLine("Imię właściciela: {0}", billingAccount.FirstName);
-            Console.WriteLine("Nazwisko właściciela: {0}", billingAccount.LastName);
-            Console.WriteLine("PESEL właściciela: {0}", billingAccount.Pesel);
-
+            //Printer printer = new Printer();
+            //printer.Print(savingsAccount);
+            //printer.Print(savingsAccount2);
+            //printer.Print(billingAccount);
+            string fullName = savingsAccount.GetFullName();
+            Console.WriteLine("Pierwsze konto w systemie dostał(-a): {0}", fullName);
+            string balance = savingsAccount.GetBalance();
+            Console.WriteLine("stan konta: {0}", balance);
         }
     }
 }
