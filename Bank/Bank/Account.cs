@@ -23,6 +23,7 @@ namespace Bank
             LastName = lastname;
             Pesel = pesel;
         }
+        public abstract string TypeName();
         public string GetFullName()
         {
             string fullName = string.Format("{0} {1}", FirstName, LastName);
