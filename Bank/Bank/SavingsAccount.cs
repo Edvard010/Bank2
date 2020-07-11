@@ -10,14 +10,14 @@ namespace Bank
         {
 
         }
-        public SavingsAccount(string accountnumber, decimal balance, string firstname, string lastname, long pesel)
-            : base(accountnumber, balance, firstname, lastname, pesel)
+        public SavingsAccount(int id, string firstname, string lastname, long pesel)
+            : base(id, firstname, lastname, pesel)
         {
         }
 
         public override string TypeName()
         {
-            return "OSZCZĘDNOŚCIOWE";
+            return "OSZCZĘDNOŚCIOWE";           
         }
     }
 }

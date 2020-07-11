@@ -6,19 +6,21 @@ namespace Bank
 {
     public abstract class Account //klasa bazowa
     {
-        public string AccountNumber;
-        public decimal Balance;
-        public string FirstName;
-        public string LastName;
-        public long Pesel;
+        public int Id { get; private set; }
+        public string AccountNumber { get; private set; }
+        public decimal Balance { get; private set; }
+        public string FirstName { get; private set; }
+        public string LastName { get; private set; }
+        public long Pesel { get; private set; }
         public Account()
         {
 
         }
-        public Account(string accountnumber, decimal balance, string firstname, string lastname, long pesel)
+        public Account(int id, string firstname, string lastname, long pesel)
         {
-            AccountNumber = accountnumber;
-            Balance = balance;
+            Id = id;
+            AccountNumber = GenerateAccountNumber(id);
+            Balance = 0.0m;
             FirstName = firstname;
             LastName = lastname;
             Pesel = pesel;
@@ -33,7 +35,12 @@ namespace Bank
         public string GetBalance()
         {
             return string.Format("{0} zł", Balance);
+        }
+        private string GenerateAccountNumber(int id)
+        {
+            var accountNumber = string.Format("94{0:D10}", id);
 
+            return accountNumber;
         }
     }
 }

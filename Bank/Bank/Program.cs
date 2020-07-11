@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Bank
 {
@@ -6,26 +8,22 @@ namespace Bank
     {
         static void Main(string[] args)
         {
-            string name = "Nazwa: Bank";
-            string author = "Autor: Marek Zajac";
             
-            Account savingsAccount = new SavingsAccount("940000000001", 0.0M, "Marek", "Zajac", 92010133333);
-            
-                       
-            Account savingsAccount2 = new SavingsAccount("940000000002", 0.0M, "Jacek", "Placek", 91010166666);
-                        
+            AccountsManager manager = new AccountsManager();
 
-            Account billingAccount = new BillingAccount("940000000011", 0.0m, savingsAccount.FirstName, savingsAccount.LastName, savingsAccount.Pesel);
-            
+            manager.CreateBillingAccount("Marek", "Zajac", 92010133333);
+            manager.CreateSavingsAccount("Jacek", "Placek", 91010166666);
+            manager.CreateSavingsAccount("Zzzz", "Bbb", 0987654321);            
+            manager.CreateSavingsAccount("Marek", "Aaaa", 1234554321);
+
+            IList<Account> accounts = (IList<Account>)manager.GetAllAccounts(); accounts = (IList<Account>)manager.GetAllAccounts();
 
             Printer printer = new Printer();
-            printer.Print(savingsAccount);
-            printer.Print(savingsAccount2);
-            printer.Print(billingAccount);
-            string fullName = savingsAccount.GetFullName();
-            Console.WriteLine("Pierwsze konto w systemie dostał(-a): {0}", fullName);
-            string balance = savingsAccount.GetBalance();
-            Console.WriteLine("stan konta: {0}", balance);
+
+            printer.Print(accounts[0]);
+            printer.Print(accounts[2]);
+
+            Console.ReadKey();
         }
     }
 }
