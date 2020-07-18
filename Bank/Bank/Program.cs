@@ -20,8 +20,10 @@ namespace Bank
 
             Printer printer = new Printer();
 
-            printer.Print(accounts[0]);
-            printer.Print(accounts[2]);
+            foreach (Account account in accounts)
+            {
+                printer.Print(account);
+            }
 
             Console.ReadKey();
         }
