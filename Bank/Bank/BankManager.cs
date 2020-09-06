@@ -159,6 +159,7 @@ namespace Bank
                         Console.Clear();
                         Console.WriteLine("Wybrano listę kont klienta");
                         Console.ReadKey();
+                        ListOfAccounts();
                         break;
                     case 2:
                         Console.Clear();
@@ -201,7 +202,12 @@ namespace Bank
                         Console.WriteLine("Wybrano zamknięcie miesiąca");
                         Console.ReadKey();
                         CloseMonth();
-                        break;                    
+                        break;
+                    default:
+                        Console.Clear();
+                        Console.WriteLine("Nieznane polecenie");
+                        Console.ReadKey();
+                        break;
                 }
             }
             while (action != 0);
